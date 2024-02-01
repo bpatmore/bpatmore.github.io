@@ -1,5 +1,5 @@
 ---
-title: "YOUR NAME" 
+title: "Brett Patmore" 
 about:
   template: trestles  # jolla  trestles  solana  marquee  broadside
   image: img/profile.png
@@ -22,20 +22,14 @@ about:
     - icon: mailbox
       text: Email
       href: mailto:YOUR_EMAIL@geneseo.edu
-
 ---
 
-
-Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana.
+Brett Patmore majors in Business Administration at SUNY Geneseo. Brett is also a member of the Indoor and Outdoor Track & Field teams at SUNY Geneseo. His events are pole vault and javelin.
 
 ## Education
 
-State University of New York at Geneseo | Geneseo, NY <br>
-B.S. in Data Analytics | Aug 2022 - May 2026 <br>
-Minor in Business Administration 
+State University of New York at Geneseo \| Geneseo, NY <br> B.S. in Business Administration \| May 2024
 
 ## Experience
 
-Starbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024
-
-
+Entrepreneurial Digital Sales and Marketing \| Operating Online Marketplaces \| 2020-Present
