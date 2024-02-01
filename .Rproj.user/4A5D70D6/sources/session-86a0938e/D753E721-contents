@@ -1,6 +1,6 @@
 ---
 title: "Brett Patmore" 
-about:
+about: 
   template: trestles  # jolla  trestles  solana  marquee  broadside
   image: img/profile.png
   image-width: 16em
