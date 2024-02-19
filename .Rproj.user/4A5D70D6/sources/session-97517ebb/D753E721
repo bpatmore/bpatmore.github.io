@@ -3,7 +3,7 @@
     "path": "~/Documents/RDataAnalytics/bpatmore.github.io/index.qmd",
     "project_path": "index.qmd",
     "type": "quarto_markdown",
-    "hash": "861927371",
+    "hash": "1779583654",
     "contents": "",
     "dirty": false,
     "created": 1706819934010.0,
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "20,106",
-        "scrollLine": "4",
+        "cursorPosition": "21,19",
+        "scrollLine": "7",
         "rmdVisualMode": "false",
         "rmdVisualWrapConfigured": "true",
         "docOutlineVisible": "1",
@@ -22,11 +22,11 @@
         "docOutlineSize": "30"
     },
     "folds": "",
-    "lastKnownWriteTime": 1708372917,
+    "lastKnownWriteTime": 1708377936,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1708372917377,
+    "last_content_update": 1708377936648,
     "read_only": false,
     "read_only_alternatives": []
 }
