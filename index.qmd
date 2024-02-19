@@ -18,7 +18,7 @@ about:
       href: https://github.com
     - icon: file-earmark-pdf
       text: Resumé
-      href: file:///Users/brettpatmore/Downloads/Brett%20Patmore%20Resume%20revised.pdf?inline=true
+      href: /Users/brettpatmore/Documents/R data analytics/bpatmore.github.io/Brett Patmore Resume revised.pdf?inline=true
     - icon: mailbox
       text: Email
       href: mailto: bap9@geneseo.edu
