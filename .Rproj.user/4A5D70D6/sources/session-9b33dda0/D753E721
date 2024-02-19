@@ -12,21 +12,21 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "23,35",
-        "scrollLine": "15",
+        "cursorPosition": "24,3",
+        "scrollLine": "17",
         "rmdVisualMode": "false",
         "rmdVisualWrapConfigured": "true",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
         "rmdVisualModeLocation": "2:142",
-        "docOutlineSize": "26"
+        "docOutlineSize": "30"
     },
     "folds": "",
-    "lastKnownWriteTime": 1708360842,
+    "lastKnownWriteTime": 1708361443,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1708361234225,
+    "last_content_update": 1708361673529,
     "read_only": false,
     "read_only_alternatives": []
 }
