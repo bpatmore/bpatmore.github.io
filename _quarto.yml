@@ -11,6 +11,8 @@ website:
         href: project.qmd
       - text: Blog
         href: blog-listing.qmd
+      - text: R Basics
+        href: /Users/brettpatmore/Documents/RDataAnalytics/bpatmore.github.io/danl-200-quarto.qmd
             
   page-footer: 
     center: "Powered with GitHub and Quarto<br>© Brett Patmore, 2023"
