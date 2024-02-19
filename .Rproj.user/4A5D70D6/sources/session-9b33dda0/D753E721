@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "24,3",
-        "scrollLine": "17",
+        "cursorPosition": "10,20",
+        "scrollLine": "4",
         "rmdVisualMode": "false",
         "rmdVisualWrapConfigured": "true",
         "docOutlineVisible": "1",
@@ -26,7 +26,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1708361673529,
+    "last_content_update": 1708362079846,
     "read_only": false,
     "read_only_alternatives": []
 }
