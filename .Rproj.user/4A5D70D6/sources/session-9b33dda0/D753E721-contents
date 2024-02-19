@@ -2,7 +2,7 @@
 title: "Brett Patmore" 
 about: 
   template: trestles  # jolla  trestles  solana  marquee  broadside
-  image: img/IMG_4837.HEIC
+  image: img/IMG_7355.jpg
   image-width: 16em
   image-shape: round # rectangle  round  rounded
   
@@ -18,7 +18,7 @@ about:
       href: https://github.com
     - icon: file-earmark-pdf
       text: Resumé
-      href: /Users/brettpatmore/Documents/Brett Patmore Resume revised.pdf
+      href: /Users/brettpatmore/Documents/R data analytics/bpatmore.github.io/Brett Patmore Resume revised.pdf
     - icon: mailbox
       text: Email
       href: mailto:bap9@geneseo.edu
