@@ -13,7 +13,7 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/bpatmore
-    - icon: file-earmark-pdf
+    - icon: file-earmark-pdf 
       text: Resumé
       href: https://bpatmore.github.io/BrettPatmoreResume.pdf
     - icon: mailbox
