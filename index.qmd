@@ -18,7 +18,7 @@ about:
       href: https://bpatmore.github.io/BrettPatmoreResume.pdf
     - icon: mailbox
       text: Email
-      href: mailto:bap9@geneseo.edu
+      href: mailto:bap9@geneseo.edu 
 ---
 
 Brett Patmore majors in Business Administration at SUNY Geneseo. Brett is also a member of the Indoor and Outdoor Track & Field teams at SUNY Geneseo. His events are pole vault and javelin.
