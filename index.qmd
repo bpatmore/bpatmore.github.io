@@ -10,18 +10,15 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: www.linkedin.com/in/brett-patmore-40445924b
-    - icon: instagram
-      text: Instagram
-      href: https://instagram.com
     - icon: github
       text: GitHub
-      href: https://github.com
+      href: https://github.com/bpatmore
     - icon: file-earmark-pdf
       text: Resumé
-      href: https:/Users/brettpatmore/Documents/RDataAnalytics/bpatmore.github.io/BrettPatmoreResume.pdf
+      href: https://bpatmore.github.io/BrettPatmoreResume.pdf
     - icon: mailbox
       text: Email
-      href: mailto: bap9@geneseo.edu
+      href: mailto:bap9@geneseo.edu
 ---
 
 Brett Patmore majors in Business Administration at SUNY Geneseo. Brett is also a member of the Indoor and Outdoor Track & Field teams at SUNY Geneseo. His events are pole vault and javelin.
