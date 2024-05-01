@@ -151,6 +151,34 @@
     "href": "blog-listing.html",
     "title": "Insightful Analytics",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nHomework 4\n\n\nhealth_cust Data Analytics\n\n\n\n\n\n\nApr 30, 2024\n\n\nBrett Patmore\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nHomework 4\n\n\n\n\n\n\n\n\n\nApr 30, 2024\n\n\nBrett Patmore\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/Homework 4/hw4blog.html",
+    "href": "posts/Homework 4/hw4blog.html",
+    "title": "Homework 4",
+    "section": "",
+    "text": "Create a blog post featuring data analysis on the health_cust data.frame and publish it on your GitHub website using your Quarto document for Homework 2.\n\nIf you have not completed on Homework 2, please take this opportunity to do so."
+  },
+  {
+    "objectID": "posts/Homework 4/hw4blog.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
+    "href": "posts/Homework 4/hw4blog.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
+    "title": "Homework 4",
+    "section": "The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.",
+    "text": "The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.\n\nhousing_type_statistics &lt;- health_cust |&gt; \n  group_by(housing_type) |&gt; \n  summarize(\n    mean = mean(income, na.rm = TRUE),\n    SD = sd(income, na.rm = TRUE),\n    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),\n    Median = median(income, na.rm = TRUE),\n    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), \n    Max = max(income, na.rm = TRUE)\n  )"
+  },
+  {
+    "objectID": "posts/Homework 4/hw4.html",
+    "href": "posts/Homework 4/hw4.html",
+    "title": "Homework 4",
+    "section": "",
+    "text": "Code\nhealth_cust &lt;- read_csv('https://bcdanl.github.io/data/custdata_rev.csv')"
+  },
+  {
+    "objectID": "posts/Homework 4/hw4.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
+    "href": "posts/Homework 4/hw4.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
+    "title": "Homework 4",
+    "section": "3.1 The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.",
+    "text": "3.1 The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.\n\n\nCode\nhousing_type_statistics &lt;- health_cust |&gt; \n  group_by(housing_type) |&gt; \n  summarize(\n    mean = mean(income, na.rm = TRUE),\n    SD = sd(income, na.rm = TRUE),\n    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),\n    Median = median(income, na.rm = TRUE),\n    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), \n    Max = max(income, na.rm = TRUE)\n  )"
   }
 ]

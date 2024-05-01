@@ -1,0 +1,85 @@
+---
+title: "Homework 4"
+author: "Brett Patmore"
+date: "2024-04-30"
+categories: [code, analysis]
+image: "image.jpg"
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(hrbrthemes)
+library(skimr)
+library(DT)
+
+```
+
+
+# Question 2
+
+- Create a blog post featuring data analysis on the `health_cust` data.frame and publish it on your GitHub website using your Quarto document for Homework 2.
+  - If you have not completed on Homework 2, please take this opportunity to do so.
+
+# health_cust data.frame
+```{r}
+health_cust <- read_csv('https://bcdanl.github.io/data/custdata_rev.csv')
+```
+
+
+# Housing Type Statistics
+## The mean, standard deviation, first quartile, median, third quartile, and maximum of 'income' for each 'housing_type'.
+```{r}
+housing_type_statistics <- health_cust |> 
+  group_by(housing_type) |> 
+  summarize(
+    mean = mean(income, na.rm = TRUE),
+    SD = sd(income, na.rm = TRUE),
+    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),
+    Median = median(income, na.rm = TRUE),
+    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), 
+    Max = max(income, na.rm = TRUE)
+  )
+```
+
+
+# State of Residency Statistics
+```{r}
+state_statistics <- health_cust |> 
+  group_by(state_of_res) |> 
+  summarize(
+    mean = mean(income, na.rm = TRUE),
+    SD = sd(income, na.rm = TRUE),
+    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),
+    Median = median(income, na.rm = TRUE),
+    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), 
+    Max = max(income, na.rm = TRUE)
+  )
+```
+
+
+# Marital Status Statistics
+```{r}
+marital_statistics <- health_cust |> 
+  group_by(marital_status) |> 
+  summarize(
+    mean = mean(income, na.rm = TRUE),
+    SD = sd(income, na.rm = TRUE),
+    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),
+    Median = median(income, na.rm = TRUE),
+    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), 
+    Max = max(income, na.rm = TRUE)
+  )
+```
+
+
+# Income by housing type
+```{r}
+income_by_housing_type <- health_cust |> 
+  group_by(income, housing_type) |> 
+  summarize(Count = n(), .groups = "drop") |> 
+  group_by(housing_type) |> 
+  arrange(desc(income))
+```
+
+
