@@ -3,7 +3,7 @@
     "path": "~/Documents/RDataAnalytics/bpatmore.github.io/posts/Homework 4/HW4.qmd",
     "project_path": "posts/Homework 4/HW4.qmd",
     "type": "quarto_markdown",
-    "hash": "474677999",
+    "hash": "3452908310",
     "contents": "",
     "dirty": false,
     "created": 1715365449870.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "94,0",
-        "scrollLine": "74"
+        "cursorPosition": "45,3",
+        "scrollLine": "31"
     },
     "folds": "",
-    "lastKnownWriteTime": 1715365856,
+    "lastKnownWriteTime": 1715366199,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1715365856138,
+    "last_content_update": 1715366199454,
     "read_only": false,
     "read_only_alternatives": []
 }
