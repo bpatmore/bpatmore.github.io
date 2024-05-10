@@ -33,7 +33,7 @@ theme_set(theme_ipsum()+
           )
 ```
 
-Let's analyze the `starwars` data:
+Let's analyze the `spotify` data:
 
 ```{r}
 spotify_all <- read_csv('https://bcdanl.github.io/data/spotify_all.csv')
