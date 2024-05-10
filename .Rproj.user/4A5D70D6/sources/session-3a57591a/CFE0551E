@@ -1,26 +1,26 @@
 {
-    "id": "991605EE",
-    "path": "~/Documents/RDataAnalytics/bpatmore.github.io/posts/post-with-code/index.qmd",
-    "project_path": "posts/post-with-code/index.qmd",
+    "id": "CFE0551E",
+    "path": "~/Documents/RDataAnalytics/bpatmore.github.io/posts/spotify/spotify.qmd",
+    "project_path": "posts/spotify/spotify.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "1564406917",
     "contents": "",
     "dirty": false,
-    "created": 1714523828258.0,
+    "created": 1715364465311.0,
     "source_on_save": false,
     "relative_order": 7,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "12,3",
-        "scrollLine": "0"
+        "cursorPosition": "203,0",
+        "scrollLine": "184"
     },
     "folds": "",
-    "lastKnownWriteTime": 1706657366,
+    "lastKnownWriteTime": 1715364884,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1706657366,
+    "last_content_update": 1715364884638,
     "read_only": false,
     "read_only_alternatives": []
 }

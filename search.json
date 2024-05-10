@@ -91,6 +91,20 @@
     "text": "3.8 Help System\nTo get help on a specific function or topic, use the help() function or the shorthand ?, like ?sum on R Console."
   },
   {
+    "objectID": "posts/Homework 4/hw4blog.html",
+    "href": "posts/Homework 4/hw4blog.html",
+    "title": "Homework 4",
+    "section": "",
+    "text": "Create a blog post featuring data analysis on the health_cust data.frame and publish it on your GitHub website using your Quarto document for Homework 2.\n\nIf you have not completed on Homework 2, please take this opportunity to do so."
+  },
+  {
+    "objectID": "posts/Homework 4/hw4blog.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
+    "href": "posts/Homework 4/hw4blog.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
+    "title": "Homework 4",
+    "section": "The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.",
+    "text": "The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.\n\nhousing_type_statistics &lt;- health_cust |&gt; \n  group_by(housing_type) |&gt; \n  summarize(\n    mean = mean(income, na.rm = TRUE),\n    SD = sd(income, na.rm = TRUE),\n    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),\n    Median = median(income, na.rm = TRUE),\n    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), \n    Max = max(income, na.rm = TRUE)\n  )"
+  },
+  {
     "objectID": "posts/starwars/starwars_df.html",
     "href": "posts/starwars/starwars_df.html",
     "title": "Starwars",
@@ -112,6 +126,55 @@
     "text": "Human vs. Droid\n\nggplot(data = \n         starwars %&gt;% \n         filter(species %in% c(\"Human\", \"Droid\"))) +\n  geom_boxplot(aes(x = species, y = mass, \n                   fill = species),\n               show.legend = FALSE)"
   },
   {
+    "objectID": "posts/spotify/spotify.html",
+    "href": "posts/spotify/spotify.html",
+    "title": "Spotify",
+    "section": "",
+    "text": "Let’s analyze the starwars data:\nspotify_all &lt;- read_csv('https://bcdanl.github.io/data/spotify_all.csv')\nThe data.frame spotify_all includes information about Spotify users’ playlists."
+  },
+  {
+    "objectID": "posts/spotify/spotify.html#variable-description",
+    "href": "posts/spotify/spotify.html#variable-description",
+    "title": "Spotify",
+    "section": "Variable Description",
+    "text": "Variable Description\n\npid: playlist ID; unique ID for playlist\nplaylist_name: a name of playlist\npos: a position of the track within a playlist (starting from 0)\nartist_name: name of the track’s primary artist\ntrack_name: name of the track\nduration_ms: duration of the track in milliseconds\nalbum_name: name of the track’s album"
+  },
+  {
+    "objectID": "posts/spotify/spotify.html#q1a",
+    "href": "posts/spotify/spotify.html#q1a",
+    "title": "Spotify",
+    "section": "Q1a",
+    "text": "Q1a\n\nFind the ten most popular song.\n\nA value of a song is defined as a combination of a artist_name value and a track_name value.\nWho are artists for those ten most popular song?\n\n\nAnswer:\n\npopular_songs &lt;- spotify_all |&gt; \n  group_by(artist_name, track_name) |&gt; \n  summarize(Count = n()) |&gt; \n  arrange(desc(Count))\n\ntop_ten_songs &lt;- popular_songs |&gt; \n  head(n = 10)\n\ntop_ten_songs_artists &lt;- top_ten_songs$artist_name"
+  },
+  {
+    "objectID": "posts/spotify/spotify.html#q1b",
+    "href": "posts/spotify/spotify.html#q1b",
+    "title": "Spotify",
+    "section": "Q1b",
+    "text": "Q1b\n\nFind the five most popular artist in terms of the number of occurrences in the data.frame, spotify_all.\nWhat is the most popular song for each of the five most popular artist?\n\nAnswer:\n\npopular_artists &lt;- spotify_all |&gt; \n  group_by(artist_name) |&gt; \n  summarize(Count = n()) |&gt; \n  arrange(desc(Count))\n\ntop_five_artists &lt;- popular_artists |&gt; \n  head(n = 5)\n\ntop_song_by_artist &lt;- popular_songs |&gt; \n  filter(artist_name %in% top_five_artists$artist_name) |&gt; \n  group_by(artist_name) |&gt; \n  slice_head(n = 1)"
+  },
+  {
+    "objectID": "posts/spotify/spotify.html#q1c",
+    "href": "posts/spotify/spotify.html#q1c",
+    "title": "Spotify",
+    "section": "Q1c",
+    "text": "Q1c\n\nCreate a data.frame named drake_one_dance that includes all playlists featuring the song where track_name equals “One Dance” and artist_name equals “Drake”.\n\nEnsure that the data.frame drake_one_dance does not contain any playlists where the song “One Dance” by Drake is absent.\n\nWhat is the song with the highest frequency of appearances after Drake’s “One Dance” in the newly created data.frame, drake_one_dance?\n\nAnswer:\n\ndrake_one_dance_playlists &lt;- spotify_all |&gt; \n  filter(track_name == \"One Dance\" & artist_name == \"Drake\") |&gt; \n  select(pid)\n\ndrake_one_dance &lt;- spotify_all |&gt; \n  filter(pid %in% drake_one_dance_playlists$pid)\n\ncheck_drake_one_dance &lt;- drake_one_dance %&gt;%\n  group_by(pid) %&gt;%\n  filter(all(c(\"One Dance\" %in% track_name, \"Drake\" %in% artist_name))) %&gt;%\n  ungroup()\n\n\npopular_song_after_one_dance &lt;- drake_one_dance |&gt; \n  group_by(track_name) |&gt; \n  summarize(Appearances = n()) |&gt; \n  arrange(desc(Appearances)) |&gt; \n  filter(track_name != \"One Dance\") |&gt; \n  slice_head(n = 1)"
+  },
+  {
+    "objectID": "posts/spotify/spotify.html#q1d",
+    "href": "posts/spotify/spotify.html#q1d",
+    "title": "Spotify",
+    "section": "Q1d",
+    "text": "Q1d\nProvide both (1) ggplot code and (2) a couple of sentences to describe the relationship between pos and the ten most popular artists.\nAnswer:\n\ntop_ten_artist_names &lt;- popular_artists |&gt; \n  head(n = 10)\n\ntop_ten_artists &lt;- spotify_all |&gt; \n  filter(artist_name %in% top_ten_artist_names$artist_name)\n\ntop_ten_artists &lt;- left_join(top_ten_artists, top_ten_artist_names, by = \"artist_name\")\n\nggplot(top_ten_artists,\n       aes(x = pos))+\n  geom_bar(position = \"stack\") +\n  facet_wrap(artist_name ~ .)\n\n\n\n# The top ten artists all have a similar relationship with pos. They all have a higher frequency of when pos is at 0 and close to 0 and decrease in frequency as pos increases. Since these are the top ten artists, it makes sense that their songs would be at the beginning of playlists more often than at the end."
+  },
+  {
+    "objectID": "posts/spotify/spotify.html#q1e",
+    "href": "posts/spotify/spotify.html#q1e",
+    "title": "Spotify",
+    "section": "Q1e",
+    "text": "Q1e\nCreate the data.frame with pid-artist level of observations with the following four variables:\n\npid: playlist id\nplaylist_name: name of playlist\nartist: name of the track’s primary artist, which appears only once within a playlist\nn_artist: number of occurrences of artist within a playlist\n\nAnswer:\n\nplaylist_artist_count &lt;- spotify_all |&gt; \n  group_by(pid, artist_name) |&gt; \n  summarize(n_artist = n()) |&gt; \n  ungroup()\n\nplaylist_artist_level &lt;- spotify_all %&gt;%\n  select(pid, playlist_name, artist_name) %&gt;%\n  distinct() %&gt;%\n  left_join(playlist_artist_count, by = c(\"pid\", \"artist_name\"))\n\nplaylist_artist_level &lt;- rename(playlist_artist_level, artist = artist_name)"
+  },
+  {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
     "title": "Post With Code",
@@ -124,6 +187,20 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/Homework 4/hw4.html",
+    "href": "posts/Homework 4/hw4.html",
+    "title": "Homework 4",
+    "section": "",
+    "text": "Code\nhealth_cust &lt;- read_csv('https://bcdanl.github.io/data/custdata_rev.csv')"
+  },
+  {
+    "objectID": "posts/Homework 4/hw4.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
+    "href": "posts/Homework 4/hw4.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
+    "title": "Homework 4",
+    "section": "3.1 The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.",
+    "text": "3.1 The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.\n\n\nCode\nhousing_type_statistics &lt;- health_cust |&gt; \n  group_by(housing_type) |&gt; \n  summarize(\n    mean = mean(income, na.rm = TRUE),\n    SD = sd(income, na.rm = TRUE),\n    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),\n    Median = median(income, na.rm = TRUE),\n    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), \n    Max = max(income, na.rm = TRUE)\n  )"
   },
   {
     "objectID": "index.html",
@@ -151,34 +228,6 @@
     "href": "blog-listing.html",
     "title": "Insightful Analytics",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nHomework 4\n\n\nhealth_cust Data Analytics\n\n\n\n\n\n\nApr 30, 2024\n\n\nBrett Patmore\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nHomework 4\n\n\n\n\n\n\n\n\n\nApr 30, 2024\n\n\nBrett Patmore\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/Homework 4/hw4blog.html",
-    "href": "posts/Homework 4/hw4blog.html",
-    "title": "Homework 4",
-    "section": "",
-    "text": "Create a blog post featuring data analysis on the health_cust data.frame and publish it on your GitHub website using your Quarto document for Homework 2.\n\nIf you have not completed on Homework 2, please take this opportunity to do so."
-  },
-  {
-    "objectID": "posts/Homework 4/hw4blog.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
-    "href": "posts/Homework 4/hw4blog.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
-    "title": "Homework 4",
-    "section": "The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.",
-    "text": "The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.\n\nhousing_type_statistics &lt;- health_cust |&gt; \n  group_by(housing_type) |&gt; \n  summarize(\n    mean = mean(income, na.rm = TRUE),\n    SD = sd(income, na.rm = TRUE),\n    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),\n    Median = median(income, na.rm = TRUE),\n    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), \n    Max = max(income, na.rm = TRUE)\n  )"
-  },
-  {
-    "objectID": "posts/Homework 4/hw4.html",
-    "href": "posts/Homework 4/hw4.html",
-    "title": "Homework 4",
-    "section": "",
-    "text": "Code\nhealth_cust &lt;- read_csv('https://bcdanl.github.io/data/custdata_rev.csv')"
-  },
-  {
-    "objectID": "posts/Homework 4/hw4.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
-    "href": "posts/Homework 4/hw4.html#the-mean-standard-deviation-first-quartile-median-third-quartile-and-maximum-of-income-for-each-housing_type.",
-    "title": "Homework 4",
-    "section": "3.1 The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.",
-    "text": "3.1 The mean, standard deviation, first quartile, median, third quartile, and maximum of ‘income’ for each ‘housing_type’.\n\n\nCode\nhousing_type_statistics &lt;- health_cust |&gt; \n  group_by(housing_type) |&gt; \n  summarize(\n    mean = mean(income, na.rm = TRUE),\n    SD = sd(income, na.rm = TRUE),\n    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),\n    Median = median(income, na.rm = TRUE),\n    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), \n    Max = max(income, na.rm = TRUE)\n  )"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nSpotify\n\n\n\n\n\n\n\n\n\nMay 10, 2024\n\n\nBrett Patmore\n\n\n5 min\n\n\n\n\n\n\n  \n\n\n\n\nHomework 4\n\n\nhealth_cust Data Analytics\n\n\n\n\n\n\nApr 30, 2024\n\n\nBrett Patmore\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nHomework 4\n\n\n\n\n\n\n\n\n\nApr 30, 2024\n\n\nBrett Patmore\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
   }
 ]
