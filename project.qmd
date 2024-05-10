@@ -24,6 +24,7 @@ library(tidyverse)
 library(skimr)
 library(ggthemes)
 library(hrbrthemes)
+library(dplyr)
 
 theme_set(theme_ipsum()+
           theme(strip.background =element_rect(fill="lightgray"),
@@ -41,7 +42,7 @@ theme_set(theme_ipsum()+
 
 
 
-## Beer Market Data
+# Beer Market Data
 ```{r}
 beer_markets <- read_csv("https://bcdanl.github.io/data/beer_markets_all.csv")
 ```
@@ -102,9 +103,16 @@ rmarkdown::paged_table(beer_markets)
 
 ## Address the questions through summary statistics, data visualization, and data transformation.
 
+## Question 1
+
+- Question 1
+
+*Answer:* 
 ```{r}
 
+  
 ```
+
 
 ```{r}
 

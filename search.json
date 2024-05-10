@@ -4,63 +4,63 @@
     "href": "project.html",
     "title": "Beer Market Analysis",
     "section": "",
-    "text": "beer_markets &lt;- read_csv(\"https://bcdanl.github.io/data/beer_markets_all.csv\")"
-  },
-  {
-    "objectID": "project.html#beer-market-data",
-    "href": "project.html#beer-market-data",
-    "title": "Beer Market Analysis",
-    "section": "",
-    "text": "beer_markets &lt;- read_csv(\"https://bcdanl.github.io/data/beer_markets_all.csv\")"
+    "text": "beer_markets &lt;- read_csv(\"https://bcdanl.github.io/data/beer_markets_all.csv\")\n\n\n\n\n\n  \n\n\n\n\n\n\n\n‘hh’: an identifier of the household\n‘X_purchase_desc’: details on the purchased item\n‘quantity’: the number of items purchased\n‘brand’: Bud Light, Busch Light, Coors Light, Miller Lite, or Natural Light\n‘dollar_spent’: total dollar value of purchase\n‘beer_floz’: total volume of beer, in fluid ounces\n‘price_per_floz’: price per fl.oz. (i.e., beer spent/beer floz)\n‘container’: the type of container\n‘promo’: Whether the item was promoted (coupon or otherwise)\n‘market’: Scan-track market (or state if rural)\n‘state’: US State\ndemographic data, including gender, marital status, household income, class of work, race, education, age, the size of household, and whether or not the household has a microwave or dishwasher"
   },
   {
     "objectID": "project.html#variable-description",
     "href": "project.html#variable-description",
     "title": "Beer Market Analysis",
-    "section": "0.2 Variable Description",
-    "text": "0.2 Variable Description\n\n‘hh’: an identifier of the household\n‘X_purchase_desc’: details on the purchased item\n‘quantity’: the number of items purchased\n‘brand’: Bud Light, Busch Light, Coors Light, Miller Lite, or Natural Light\n‘dollar_spent’: total dollar value of purchase\n‘beer_floz’: total volume of beer, in fluid ounces\n‘price_per_floz’: price per fl.oz. (i.e., beer spent/beer floz)\n‘container’: the type of container\n‘promo’: Whether the item was promoted (coupon or otherwise)\n‘market’: Scan-track market (or state if rural)\n‘state’: US State\ndemographic data, including gender, marital status, household income, class of work, race, education, age, the size of household, and whether or not the household has a microwave or dishwasher"
+    "section": "",
+    "text": "‘hh’: an identifier of the household\n‘X_purchase_desc’: details on the purchased item\n‘quantity’: the number of items purchased\n‘brand’: Bud Light, Busch Light, Coors Light, Miller Lite, or Natural Light\n‘dollar_spent’: total dollar value of purchase\n‘beer_floz’: total volume of beer, in fluid ounces\n‘price_per_floz’: price per fl.oz. (i.e., beer spent/beer floz)\n‘container’: the type of container\n‘promo’: Whether the item was promoted (coupon or otherwise)\n‘market’: Scan-track market (or state if rural)\n‘state’: US State\ndemographic data, including gender, marital status, household income, class of work, race, education, age, the size of household, and whether or not the household has a microwave or dishwasher"
   },
   {
     "objectID": "project.html#background-provide-context-for-the-research-topics-explaining-why-they-are-significant-or-relevant.",
     "href": "project.html#background-provide-context-for-the-research-topics-explaining-why-they-are-significant-or-relevant.",
     "title": "Beer Market Analysis",
-    "section": "1.1 Background: Provide context for the research topics, explaining why they are significant or relevant.",
-    "text": "1.1 Background: Provide context for the research topics, explaining why they are significant or relevant."
+    "section": "2.1 Background: Provide context for the research topics, explaining why they are significant or relevant.",
+    "text": "2.1 Background: Provide context for the research topics, explaining why they are significant or relevant."
   },
   {
     "objectID": "project.html#statement-of-the-problem-clearly-articulate-the-specific-problem-or-issue-the-project-will-address.",
     "href": "project.html#statement-of-the-problem-clearly-articulate-the-specific-problem-or-issue-the-project-will-address.",
     "title": "Beer Market Analysis",
-    "section": "1.2 Statement of the Problem: Clearly articulate the specific problem or issue the project will address.",
-    "text": "1.2 Statement of the Problem: Clearly articulate the specific problem or issue the project will address."
+    "section": "2.2 Statement of the Problem: Clearly articulate the specific problem or issue the project will address.",
+    "text": "2.2 Statement of the Problem: Clearly articulate the specific problem or issue the project will address."
   },
   {
     "objectID": "project.html#list-the-questions-you-aim-to-answer.",
     "href": "project.html#list-the-questions-you-aim-to-answer.",
     "title": "Beer Market Analysis",
-    "section": "2.1 List the questions you aim to answer.",
-    "text": "2.1 List the questions you aim to answer."
+    "section": "3.1 List the questions you aim to answer.",
+    "text": "3.1 List the questions you aim to answer."
   },
   {
     "objectID": "project.html#address-the-questions-through-summary-statistics-data-visualization-and-data-transformation.",
     "href": "project.html#address-the-questions-through-summary-statistics-data-visualization-and-data-transformation.",
     "title": "Beer Market Analysis",
-    "section": "2.2 Address the questions through summary statistics, data visualization, and data transformation.",
-    "text": "2.2 Address the questions through summary statistics, data visualization, and data transformation."
+    "section": "3.2 Address the questions through summary statistics, data visualization, and data transformation.",
+    "text": "3.2 Address the questions through summary statistics, data visualization, and data transformation."
+  },
+  {
+    "objectID": "project.html#question-1",
+    "href": "project.html#question-1",
+    "title": "Beer Market Analysis",
+    "section": "3.3 Question 1",
+    "text": "3.3 Question 1\n\nQuestion 1\n\nAnswer:"
   },
   {
     "objectID": "project.html#explain-its-implications-for-real-world-applications-business-strategies-or-public-policy.",
     "href": "project.html#explain-its-implications-for-real-world-applications-business-strategies-or-public-policy.",
     "title": "Beer Market Analysis",
-    "section": "3.1 Explain its implications for real-world applications, business strategies, or public policy.",
-    "text": "3.1 Explain its implications for real-world applications, business strategies, or public policy."
+    "section": "4.1 Explain its implications for real-world applications, business strategies, or public policy.",
+    "text": "4.1 Explain its implications for real-world applications, business strategies, or public policy."
   },
   {
     "objectID": "project.html#list-all-sources-cited-in-the-project.",
     "href": "project.html#list-all-sources-cited-in-the-project.",
     "title": "Beer Market Analysis",
-    "section": "4.1 List all sources cited in the project.",
-    "text": "4.1 List all sources cited in the project."
+    "section": "5.1 List all sources cited in the project.",
+    "text": "5.1 List all sources cited in the project."
   },
   {
     "objectID": "danl-200-quarto.html",

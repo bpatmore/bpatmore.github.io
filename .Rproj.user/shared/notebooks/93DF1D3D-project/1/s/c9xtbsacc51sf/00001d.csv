@@ -1,0 +1,12 @@
+"0","beer_bottle_price <- beer_markets |> 
+  mutate(bottle_price = price_per_floz * 12) |> 
+  arrange(1:4, beer_bottle_price, 5:last_col())
+"
+"1","[1m[33mError[39m in `arrange()`:[22m
+[38;5;232m[36mℹ[38;5;232m In argument: `..1 = 1:4`.[39m
+[1mCaused by error:[22m
+[38;5;232m[33m![38;5;232m `..1` must be size 73115 or 1, not 4.[39m
+Backtrace:
+[90m  1. [39m[1mdplyr[22m::arrange(...)
+[90m 11. [39mdplyr:::dplyr_internal_error(...)
+"
