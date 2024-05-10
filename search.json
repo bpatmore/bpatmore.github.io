@@ -91,8 +91,8 @@
     "text": "3.8 Help System\nTo get help on a specific function or topic, use the help() function or the shorthand ?, like ?sum on R Console."
   },
   {
-    "objectID": "posts/Homework 4/HW4.html",
-    "href": "posts/Homework 4/HW4.html",
+    "objectID": "posts/Homework 4/hw4.html",
+    "href": "posts/Homework 4/hw4.html",
     "title": "Homework 4",
     "section": "",
     "text": "Let’s analyze the homework 4 data:\n\nhealth_cust &lt;- read_csv('https://bcdanl.github.io/data/custdata_rev.csv')\n\n\n\n\n\n  \n\n\n\n\nHousing Type Statistics\n\nhousing_type_statistics &lt;- health_cust |&gt; \n  group_by(housing_type) |&gt; \n  summarize(\n    mean = mean(income, na.rm = TRUE),\n    SD = sd(income, na.rm = TRUE),\n    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),\n    Median = median(income, na.rm = TRUE),\n    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), \n    Max = max(income, na.rm = TRUE)\n  )\n\n\n\nState of Residency Statistics\n\nstate_statistics &lt;- health_cust |&gt; \n  group_by(state_of_res) |&gt; \n  summarize(\n    mean = mean(income, na.rm = TRUE),\n    SD = sd(income, na.rm = TRUE),\n    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),\n    Median = median(income, na.rm = TRUE),\n    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), \n    Max = max(income, na.rm = TRUE)\n  )\n\n\n\nMarital Status Statistics\n\nmarital_statistics &lt;- health_cust |&gt; \n  group_by(marital_status) |&gt; \n  summarize(\n    mean = mean(income, na.rm = TRUE),\n    SD = sd(income, na.rm = TRUE),\n    Q1 = quantile(income, probs = 0.25, na.rm = TRUE),\n    Median = median(income, na.rm = TRUE),\n    Q3 = quantile(income, probs = 0.75, na.rm = TRUE), \n    Max = max(income, na.rm = TRUE)\n  )\n\n\n\nIncome by Housing Type\n\nincome_by_housing_type &lt;- health_cust |&gt; \n  group_by(income, housing_type) |&gt; \n  summarize(Count = n(), .groups = \"drop\") |&gt; \n  group_by(housing_type) |&gt; \n  arrange(desc(income))"

@@ -1,5 +1,0 @@
-"0","health_cust <- read_csv('https://bcdanl.github.io/data/custdata_rev.csv')
-"
-"2","Error in open.connection(4L, ""rb"") : 
-  Could not resolve host: bcdanl.github.io
-"
