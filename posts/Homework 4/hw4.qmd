@@ -45,6 +45,8 @@ health_cust <- read_csv('https://bcdanl.github.io/data/custdata_rev.csv')
 rmarkdown::paged_table(health_cust)
 ```
 
+<br>
+
 # Housing Type Statistics
 ```{r}
 housing_type_statistics <- health_cust |> 

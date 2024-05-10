@@ -33,7 +33,7 @@ theme_set(theme_ipsum()+
           )
 ```
 
-Let's analyze the 'spotify' data:
+Let's analyze the 'Spotify' data:
 
 ```{r}
 spotify_all <- read_csv('https://bcdanl.github.io/data/spotify_all.csv')
@@ -45,7 +45,6 @@ spotify_all <- read_csv('https://bcdanl.github.io/data/spotify_all.csv')
 #| eval: true
 rmarkdown::paged_table(spotify_all)
 ```
-
 
 
 The data.frame `spotify_all` includes information about Spotify users' playlists.
