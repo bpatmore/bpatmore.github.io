@@ -1,56 +1,45 @@
 ---
-title: Homework 4
-subtitle: "health_cust Data Analytics"
-author: 
-  - name: Brett Patmore
-date: 4/30/24
+title: "Homework 4"
+author: "Brett Patmore"
+date: "2024-05-10"
+categories: [homework, code, analysis]
+image: "hw4.png"
 
 execute: 
-  echo: true    # true false
-  eval: true    # true false
-  warning: false    # true false
-  message: false    # true false
-  fig-width: 9
-  # fig-height: 5
+  warning: false
+  message: false
   
-format: 
-  html:
-    toc: true    # true false
-    number-sections: true    # true false
-    code-fold: show    # true false show       # https://quarto.org/docs/output-formats/html-code.html
-    code-tools: true    # true false
-    highlight-style: atom-one        # atom-one tango espresso   # https://quarto.org/docs/output-formats/html-code.html#highlighting
+toc: true
 ---
-
-
-```{r setup}
+```{r}
 #| include: false
-library(tidyverse)
-library(hrbrthemes)
-library(skimr)
-library(DT)
 
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+
+theme_set(theme_ipsum()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x  = element_text(angle = 0,
+                                            size = rel(1.5),
+                                            margin = margin(10,0,0,0)),
+                axis.title.y  = element_text(angle = 0,
+                                            size = rel(1.5),
+                                            margin = margin(0,10,0,0))
+                )
+          )
 ```
 
-# health_cust data.frame
+Let's analyze the `homework 4` data:
 
 ```{r}
 health_cust <- read_csv('https://bcdanl.github.io/data/custdata_rev.csv')
 ```
-# Question 2
-
-- Create a blog post featuring data analysis on the `health_cust` data.frame and publish it on your GitHub website using your Quarto document for Homework 2.
-  - If you have not completed on Homework 2, please take this opportunity to do so.
-
-```{r}
-health_cust <- read_csv(
-  'https://bcdanl.github.io/data/custdata_rev.csv'
-)
-```
-
 
 # Housing Type Statistics
-## The mean, standard deviation, first quartile, median, third quartile, and maximum of 'income' for each 'housing_type'.
 ```{r}
 housing_type_statistics <- health_cust |> 
   group_by(housing_type) |> 
@@ -95,7 +84,7 @@ marital_statistics <- health_cust |>
 ```
 
 
-# Income by housing type
+# Income by Housing Type
 ```{r}
 income_by_housing_type <- health_cust |> 
   group_by(income, housing_type) |> 
@@ -103,4 +92,3 @@ income_by_housing_type <- health_cust |>
   group_by(housing_type) |> 
   arrange(desc(income))
 ```
-

@@ -1,26 +1,26 @@
 {
-    "id": "8539E7D3",
-    "path": "~/Documents/RDataAnalytics/bpatmore.github.io/posts/starwars/starwars_df.qmd",
-    "project_path": "posts/starwars/starwars_df.qmd",
+    "id": "17518ABB",
+    "path": "~/Documents/RDataAnalytics/bpatmore.github.io/posts/Homework 4/HW4.qmd",
+    "project_path": "posts/Homework 4/HW4.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "474677999",
     "contents": "",
     "dirty": false,
-    "created": 1715364396123.0,
+    "created": 1715365449870.0,
     "source_on_save": false,
     "relative_order": 6,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "5,18",
-        "scrollLine": "0"
+        "cursorPosition": "94,0",
+        "scrollLine": "74"
     },
     "folds": "",
-    "lastKnownWriteTime": 1706657366,
+    "lastKnownWriteTime": 1715365856,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1706657366,
+    "last_content_update": 1715365856138,
     "read_only": false,
     "read_only_alternatives": []
 }

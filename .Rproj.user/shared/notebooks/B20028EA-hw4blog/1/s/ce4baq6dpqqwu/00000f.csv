@@ -1,5 +1,0 @@
-"0","income_by_housing_type <- health_cust |> "
-"0","  group_by(income, housing_type) |> "
-"0","  summarize(Count = n(), .groups = ""drop"") |> "
-"0","  group_by(housing_type) |> "
-"0","  arrange(desc(income))"
