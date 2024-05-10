@@ -41,7 +41,7 @@ theme_set(theme_ipsum()+
 
 
 
-# Beer Market Data
+## Beer Market Data
 ```{r}
 beer_markets <- read_csv("https://bcdanl.github.io/data/beer_markets_all.csv")
 ```
@@ -55,6 +55,7 @@ rmarkdown::paged_table(beer_markets)
 
 
 <br>
+
 
 ## Variable Description
 
