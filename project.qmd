@@ -93,30 +93,64 @@ rmarkdown::paged_table(beer_markets)
 The beer industry is one of the largest sectors of the global beverage market. Beer is a staple for millions of people whether it be for a celebration, social gathering, of just everyday life. Like everything in the world, the beer market is constantly evolving due to trends in the market and consumer preference changes. One consumer preference in the beer market is light beer and almost every beer company makes their own light beer. The beer markets data includes data about Bud Light, Busch Light, Coors Light, Miller Lite, and Natural Light. I am going to analyze the beer markets data to find information about brand preferences, purchasing patterns, and beer consumption trends. This information is significant because it can provide insight into competitive challenges, market opportunities, and areas of innovation and growth for breweries and retailers. 
 
 ## Statement of the Problem
-The overall goal of breweries and retailers that sell beer is to make money. In order to do this, they need to understand factors that drive consumer behavior and influence their purchasing decisions. They also need to find their specific target market and cater their beer to meet the needs of this target market. Factors in the target market include income, employment, age, race, housing, and family dynamic. I am going to analyze the dynamics and consumer behavior in the beer markets data. In doing so, I will gain an understanding of beer consumption trends, brand preferences, and purchasing patterns. I will see what the target market for each brand is and also see information about their promotions to see how this effects purchasing patterns. The problem this will address is decision making for breweries and retailers. The insight provided from the analysis of this data will tell them about competitive challenges, market opportunities, potential changes, and areas of innovation or growth to help guide their decision making.
+The overall goal of breweries and retailers that sell beer is to maximize profits. In order to do this, they need to understand factors that drive consumer behavior and influence their purchasing decisions. They also need to find their specific target market and cater their beer to meet the needs of this target market. Factors in the target market include income, employment, age, race, housing, and family dynamic. I am going to analyze the dynamics and consumer behavior in the beer markets data. In doing so, I will gain an understanding of beer consumption trends, brand preferences, and purchasing patterns. I will see what the target market for each brand is and also see information about their promotions to see how this effects purchasing patterns. The problem this will address is decision making for breweries and retailers. The insight provided from the analysis of this data will tell them about competitive challenges, market opportunities, potential changes, and areas of innovation or growth to help guide their decision making in order to maximize profits. 
 
 <br><br>
 
 
 # Exploratory Data Analysis
 
-## List the questions you aim to answer.
-
-## Address the questions through summary statistics, data visualization, and data transformation.
-
 ## Question 1
 
-- Question 1
+What is the most popular beer brand purchased at each income level?
+Does income have an impact on which brand consumers purchase?
 
 *Answer:* 
 ```{r}
+beer_brand_purchases <- beer_markets |> 
+  group_by(income, brand) |> 
+  summarize(total_quantity = sum(quantity))
 
+most_popular_brands_by_income <- beer_brand_purchases |> 
+  group_by(income) |> 
+  filter(total_quantity == max(total_quantity)) |> 
+  select(income, brand, total_quantity)
   
+brand_distribution <- beer_brand_purchases |> 
+  group_by(income) |> 
+  mutate(percentage = total_quantity / sum(total_quantity) * 100)
+
+#Bud Light is the most purchased brand at every income level besides the 60-100K level where Miller Lite is the most popular. Income does not appear to have an impact on which brand consumers purchase since Bud light is the most popular for the lowest and highest income level.
 ```
 
+## Question 2
 
+What is the most popular beer brand in each state?
+Which states buy the most beer overall?
+Which state buys the most of each brand?
+
+*Answer:* 
 ```{r}
+brand_by_state <- beer_markets |> 
+  group_by(state, brand) |> 
+  summarize(total_quantity = sum(quantity))
 
+most_popular_brand_by_state <- brand_by_state |> 
+  group_by(state) |> 
+  filter(total_quantity == max(total_quantity)) |> 
+  select(state, brand, total_quantity) |> 
+  arrange(desc(total_quantity))
+
+beer_quantity_by_state <- beer_markets |> 
+  group_by(state) |> 
+  summarize(total_quantity = sum(quantity)) |> 
+  arrange(desc(total_quantity))
+
+most_popular_state_for_brand <- brand_by_state |> 
+  group_by(brand) |> 
+  filter(total_quantity == max(total_quantity))
+
+#This data can help the brands determine where they need to distribute the most stock and which state they should target the most. For example, Florida and Texas have by far more beer sales than the rest of the states, so they will require a larger stock. Florida is the most popular state for Bud Light, Busch Light, Miller Lite, and Natural Light so those companies should be sure to have a large stock in Florida. Texas is the most popular state for Coors Light so they need a large stock in Texas. 
 ```
 
 

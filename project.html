@@ -160,9 +160,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis"><span class="header-section-number">3</span> Exploratory Data Analysis</a>
   <ul class="collapse">
-  <li><a href="#list-the-questions-you-aim-to-answer." id="toc-list-the-questions-you-aim-to-answer." class="nav-link" data-scroll-target="#list-the-questions-you-aim-to-answer."><span class="header-section-number">3.1</span> List the questions you aim to answer.</a></li>
-  <li><a href="#address-the-questions-through-summary-statistics-data-visualization-and-data-transformation." id="toc-address-the-questions-through-summary-statistics-data-visualization-and-data-transformation." class="nav-link" data-scroll-target="#address-the-questions-through-summary-statistics-data-visualization-and-data-transformation."><span class="header-section-number">3.2</span> Address the questions through summary statistics, data visualization, and data transformation.</a></li>
-  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1"><span class="header-section-number">3.3</span> Question 1</a></li>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1"><span class="header-section-number">3.1</span> Question 1</a></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2"><span class="header-section-number">3.2</span> Question 2</a></li>
   </ul></li>
   <li><a href="#significance-of-the-project" id="toc-significance-of-the-project" class="nav-link" data-scroll-target="#significance-of-the-project"><span class="header-section-number">4</span> Significance of the Project</a>
   <ul class="collapse">
@@ -245,24 +244,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="statement-of-the-problem" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="statement-of-the-problem"><span class="header-section-number">2.2</span> Statement of the Problem</h2>
-<p>The overall goal of breweries and retailers that sell beer is to make money. In order to do this, they need to understand factors that drive consumer behavior and influence their purchasing decisions. They also need to find their specific target market and cater their beer to meet the needs of this target market. Factors in the target market include income, employment, age, race, housing, and family dynamic. I am going to analyze the dynamics and consumer behavior in the beer markets data. In doing so, I will gain an understanding of beer consumption trends, brand preferences, and purchasing patterns. I will see what the target market for each brand is and also see information about their promotions to see how this effects purchasing patterns. The problem this will address is decision making for breweries and retailers. The insight provided from the analysis of this data will tell them about competitive challenges, market opportunities, potential changes, and areas of innovation or growth to help guide their decision making.</p>
+<p>The overall goal of breweries and retailers that sell beer is to maximize profits. In order to do this, they need to understand factors that drive consumer behavior and influence their purchasing decisions. They also need to find their specific target market and cater their beer to meet the needs of this target market. Factors in the target market include income, employment, age, race, housing, and family dynamic. I am going to analyze the dynamics and consumer behavior in the beer markets data. In doing so, I will gain an understanding of beer consumption trends, brand preferences, and purchasing patterns. I will see what the target market for each brand is and also see information about their promotions to see how this effects purchasing patterns. The problem this will address is decision making for breweries and retailers. The insight provided from the analysis of this data will tell them about competitive challenges, market opportunities, potential changes, and areas of innovation or growth to help guide their decision making in order to maximize profits.</p>
 <p><br><br></p>
 </section>
 </section>
 <section id="exploratory-data-analysis" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Exploratory Data Analysis</h1>
-<section id="list-the-questions-you-aim-to-answer." class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="list-the-questions-you-aim-to-answer."><span class="header-section-number">3.1</span> List the questions you aim to answer.</h2>
-</section>
-<section id="address-the-questions-through-summary-statistics-data-visualization-and-data-transformation." class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="address-the-questions-through-summary-statistics-data-visualization-and-data-transformation."><span class="header-section-number">3.2</span> Address the questions through summary statistics, data visualization, and data transformation.</h2>
-</section>
-<section id="question-1" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="question-1"><span class="header-section-number">3.3</span> Question 1</h2>
-<ul>
-<li>Question 1</li>
-</ul>
+<section id="question-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="question-1"><span class="header-section-number">3.1</span> Question 1</h2>
+<p>What is the most popular beer brand purchased at each income level? Does income have an impact on which brand consumers purchase?</p>
 <p><em>Answer:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>beer_brand_purchases <span class="ot">&lt;-</span> beer_markets <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income, brand) <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>most_popular_brands_by_income <span class="ot">&lt;-</span> beer_brand_purchases <span class="sc">|&gt;</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income) <span class="sc">|&gt;</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_quantity <span class="sc">==</span> <span class="fu">max</span>(total_quantity)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(income, brand, total_quantity)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>brand_distribution <span class="ot">&lt;-</span> beer_brand_purchases <span class="sc">|&gt;</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income) <span class="sc">|&gt;</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percentage =</span> total_quantity <span class="sc">/</span> <span class="fu">sum</span>(total_quantity) <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Bud Light is the most purchased brand at every income level besides the 60-100K level where Miller Lite is the most popular. Income does not appear to have an impact on which brand consumers purchase since Bud light is the most popular for the lowest and highest income level.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-2" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="question-2"><span class="header-section-number">3.2</span> Question 2</h2>
+<p>What is the most popular beer brand in each state? Which states buy the most beer overall? Which state buys the most of each brand?</p>
+<p><em>Answer:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>brand_by_state <span class="ot">&lt;-</span> beer_markets <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state, brand) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>most_popular_brand_by_state <span class="ot">&lt;-</span> brand_by_state <span class="sc">|&gt;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_quantity <span class="sc">==</span> <span class="fu">max</span>(total_quantity)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(state, brand, total_quantity) <span class="sc">|&gt;</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_quantity))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>beer_quantity_by_state <span class="ot">&lt;-</span> beer_markets <span class="sc">|&gt;</span> </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_quantity))</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>most_popular_state_for_brand <span class="ot">&lt;-</span> brand_by_state <span class="sc">|&gt;</span> </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">|&gt;</span> </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_quantity <span class="sc">==</span> <span class="fu">max</span>(total_quantity))</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#This data can help the brands determine where they need to distribute the most stock and which state they should target the most. For example, Florida and Texas have by far more beer sales than the rest of the states, so they will require a larger stock. Florida is the most popular state for Bud Light, Busch Light, Miller Lite, and Natural Light so those companies should be sure to have a large stock in Florida. Texas is the most popular state for Coors Light so they need a large stock in Texas. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><br><br></p>
 </section>
 </section>

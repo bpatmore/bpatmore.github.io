@@ -25,28 +25,21 @@
     "href": "project.html#statement-of-the-problem",
     "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
     "section": "2.2 Statement of the Problem",
-    "text": "2.2 Statement of the Problem\nThe overall goal of breweries and retailers that sell beer is to make money. In order to do this, they need to understand factors that drive consumer behavior and influence their purchasing decisions. They also need to find their specific target market and cater their beer to meet the needs of this target market. Factors in the target market include income, employment, age, race, housing, and family dynamic. I am going to analyze the dynamics and consumer behavior in the beer markets data. In doing so, I will gain an understanding of beer consumption trends, brand preferences, and purchasing patterns. I will see what the target market for each brand is and also see information about their promotions to see how this effects purchasing patterns. The problem this will address is decision making for breweries and retailers. The insight provided from the analysis of this data will tell them about competitive challenges, market opportunities, potential changes, and areas of innovation or growth to help guide their decision making."
-  },
-  {
-    "objectID": "project.html#list-the-questions-you-aim-to-answer.",
-    "href": "project.html#list-the-questions-you-aim-to-answer.",
-    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
-    "section": "3.1 List the questions you aim to answer.",
-    "text": "3.1 List the questions you aim to answer."
-  },
-  {
-    "objectID": "project.html#address-the-questions-through-summary-statistics-data-visualization-and-data-transformation.",
-    "href": "project.html#address-the-questions-through-summary-statistics-data-visualization-and-data-transformation.",
-    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
-    "section": "3.2 Address the questions through summary statistics, data visualization, and data transformation.",
-    "text": "3.2 Address the questions through summary statistics, data visualization, and data transformation."
+    "text": "2.2 Statement of the Problem\nThe overall goal of breweries and retailers that sell beer is to maximize profits. In order to do this, they need to understand factors that drive consumer behavior and influence their purchasing decisions. They also need to find their specific target market and cater their beer to meet the needs of this target market. Factors in the target market include income, employment, age, race, housing, and family dynamic. I am going to analyze the dynamics and consumer behavior in the beer markets data. In doing so, I will gain an understanding of beer consumption trends, brand preferences, and purchasing patterns. I will see what the target market for each brand is and also see information about their promotions to see how this effects purchasing patterns. The problem this will address is decision making for breweries and retailers. The insight provided from the analysis of this data will tell them about competitive challenges, market opportunities, potential changes, and areas of innovation or growth to help guide their decision making in order to maximize profits."
   },
   {
     "objectID": "project.html#question-1",
     "href": "project.html#question-1",
     "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
-    "section": "3.3 Question 1",
-    "text": "3.3 Question 1\n\nQuestion 1\n\nAnswer:"
+    "section": "3.1 Question 1",
+    "text": "3.1 Question 1\nWhat is the most popular beer brand purchased at each income level? Does income have an impact on which brand consumers purchase?\nAnswer:\n\nbeer_brand_purchases &lt;- beer_markets |&gt; \n  group_by(income, brand) |&gt; \n  summarize(total_quantity = sum(quantity))\n\nmost_popular_brands_by_income &lt;- beer_brand_purchases |&gt; \n  group_by(income) |&gt; \n  filter(total_quantity == max(total_quantity)) |&gt; \n  select(income, brand, total_quantity)\n  \nbrand_distribution &lt;- beer_brand_purchases |&gt; \n  group_by(income) |&gt; \n  mutate(percentage = total_quantity / sum(total_quantity) * 100)\n\n#Bud Light is the most purchased brand at every income level besides the 60-100K level where Miller Lite is the most popular. Income does not appear to have an impact on which brand consumers purchase since Bud light is the most popular for the lowest and highest income level."
+  },
+  {
+    "objectID": "project.html#question-2",
+    "href": "project.html#question-2",
+    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
+    "section": "3.2 Question 2",
+    "text": "3.2 Question 2\nWhat is the most popular beer brand in each state? Which states buy the most beer overall? Which state buys the most of each brand?\nAnswer:\n\nbrand_by_state &lt;- beer_markets |&gt; \n  group_by(state, brand) |&gt; \n  summarize(total_quantity = sum(quantity))\n\nmost_popular_brand_by_state &lt;- brand_by_state |&gt; \n  group_by(state) |&gt; \n  filter(total_quantity == max(total_quantity)) |&gt; \n  select(state, brand, total_quantity) |&gt; \n  arrange(desc(total_quantity))\n\nbeer_quantity_by_state &lt;- beer_markets |&gt; \n  group_by(state) |&gt; \n  summarize(total_quantity = sum(quantity)) |&gt; \n  arrange(desc(total_quantity))\n\nmost_popular_state_for_brand &lt;- brand_by_state |&gt; \n  group_by(brand) |&gt; \n  filter(total_quantity == max(total_quantity))\n\n#This data can help the brands determine where they need to distribute the most stock and which state they should target the most. For example, Florida and Texas have by far more beer sales than the rest of the states, so they will require a larger stock. Florida is the most popular state for Bud Light, Busch Light, Miller Lite, and Natural Light so those companies should be sure to have a large stock in Florida. Texas is the most popular state for Coors Light so they need a large stock in Texas."
   },
   {
     "objectID": "project.html#explain-its-implications-for-real-world-applications-business-strategies-or-public-policy.",

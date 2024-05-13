@@ -1,0 +1,5 @@
+"0","beer_brand_purchases <- beer_markets |> 
+  group_by(income, brand) |> 
+  summarize(total_quantity = sum(quantity))
+"
+"2","`summarise()` has grouped output by 'income'. You can override using the `.groups` argument."
