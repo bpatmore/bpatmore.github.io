@@ -2,63 +2,63 @@
   {
     "objectID": "project.html",
     "href": "project.html",
-    "title": "Beer Market Analysis",
+    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
     "section": "",
     "text": "beer_markets &lt;- read_csv(\"https://bcdanl.github.io/data/beer_markets_all.csv\")\n\n\n\n\n\n  \n\n\n\n\n\n\n\n‘hh’: an identifier of the household\n‘X_purchase_desc’: details on the purchased item\n‘quantity’: the number of items purchased\n‘brand’: Bud Light, Busch Light, Coors Light, Miller Lite, or Natural Light\n‘dollar_spent’: total dollar value of purchase\n‘beer_floz’: total volume of beer, in fluid ounces\n‘price_per_floz’: price per fl.oz. (i.e., beer spent/beer floz)\n‘container’: the type of container\n‘promo’: Whether the item was promoted (coupon or otherwise)\n‘market’: Scan-track market (or state if rural)\n‘state’: US State\ndemographic data, including gender, marital status, household income, class of work, race, education, age, the size of household, and whether or not the household has a microwave or dishwasher"
   },
   {
     "objectID": "project.html#variable-description",
     "href": "project.html#variable-description",
-    "title": "Beer Market Analysis",
+    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
     "section": "",
     "text": "‘hh’: an identifier of the household\n‘X_purchase_desc’: details on the purchased item\n‘quantity’: the number of items purchased\n‘brand’: Bud Light, Busch Light, Coors Light, Miller Lite, or Natural Light\n‘dollar_spent’: total dollar value of purchase\n‘beer_floz’: total volume of beer, in fluid ounces\n‘price_per_floz’: price per fl.oz. (i.e., beer spent/beer floz)\n‘container’: the type of container\n‘promo’: Whether the item was promoted (coupon or otherwise)\n‘market’: Scan-track market (or state if rural)\n‘state’: US State\ndemographic data, including gender, marital status, household income, class of work, race, education, age, the size of household, and whether or not the household has a microwave or dishwasher"
   },
   {
-    "objectID": "project.html#background-provide-context-for-the-research-topics-explaining-why-they-are-significant-or-relevant.",
-    "href": "project.html#background-provide-context-for-the-research-topics-explaining-why-they-are-significant-or-relevant.",
-    "title": "Beer Market Analysis",
-    "section": "2.1 Background: Provide context for the research topics, explaining why they are significant or relevant.",
-    "text": "2.1 Background: Provide context for the research topics, explaining why they are significant or relevant."
+    "objectID": "project.html#background",
+    "href": "project.html#background",
+    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
+    "section": "2.1 Background",
+    "text": "2.1 Background\nThe beer industry is one of the largest sectors of the global beverage market. Beer is a staple for millions of people whether it be for a celebration, social gathering, of just everyday life. Like everything in the world, the beer market is constantly evolving due to trends in the market and consumer preference changes. One consumer preference in the beer market is light beer and almost every beer company makes their own light beer. The beer markets data includes data about Bud Light, Busch Light, Coors Light, Miller Lite, and Natural Light. I am going to analyze the beer markets data to find information about brand preferences, purchasing patterns, and beer consumption trends. This information is significant because it can provide insight into competitive challenges, market opportunities, and areas of innovation and growth for breweries and retailers."
   },
   {
-    "objectID": "project.html#statement-of-the-problem-clearly-articulate-the-specific-problem-or-issue-the-project-will-address.",
-    "href": "project.html#statement-of-the-problem-clearly-articulate-the-specific-problem-or-issue-the-project-will-address.",
-    "title": "Beer Market Analysis",
-    "section": "2.2 Statement of the Problem: Clearly articulate the specific problem or issue the project will address.",
-    "text": "2.2 Statement of the Problem: Clearly articulate the specific problem or issue the project will address."
+    "objectID": "project.html#statement-of-the-problem",
+    "href": "project.html#statement-of-the-problem",
+    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
+    "section": "2.2 Statement of the Problem",
+    "text": "2.2 Statement of the Problem\nThe overall goal of breweries and retailers that sell beer is to make money. In order to do this, they need to understand factors that drive consumer behavior and influence their purchasing decisions. They also need to find their specific target market and cater their beer to meet the needs of this target market. Factors in the target market include income, employment, age, race, housing, and family dynamic. I am going to analyze the dynamics and consumer behavior in the beer markets data. In doing so, I will gain an understanding of beer consumption trends, brand preferences, and purchasing patterns. I will see what the target market for each brand is and also see information about their promotions to see how this effects purchasing patterns. The problem this will address is decision making for breweries and retailers. The insight provided from the analysis of this data will tell them about competitive challenges, market opportunities, potential changes, and areas of innovation or growth to help guide their decision making."
   },
   {
     "objectID": "project.html#list-the-questions-you-aim-to-answer.",
     "href": "project.html#list-the-questions-you-aim-to-answer.",
-    "title": "Beer Market Analysis",
+    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
     "section": "3.1 List the questions you aim to answer.",
     "text": "3.1 List the questions you aim to answer."
   },
   {
     "objectID": "project.html#address-the-questions-through-summary-statistics-data-visualization-and-data-transformation.",
     "href": "project.html#address-the-questions-through-summary-statistics-data-visualization-and-data-transformation.",
-    "title": "Beer Market Analysis",
+    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
     "section": "3.2 Address the questions through summary statistics, data visualization, and data transformation.",
     "text": "3.2 Address the questions through summary statistics, data visualization, and data transformation."
   },
   {
     "objectID": "project.html#question-1",
     "href": "project.html#question-1",
-    "title": "Beer Market Analysis",
+    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
     "section": "3.3 Question 1",
     "text": "3.3 Question 1\n\nQuestion 1\n\nAnswer:"
   },
   {
     "objectID": "project.html#explain-its-implications-for-real-world-applications-business-strategies-or-public-policy.",
     "href": "project.html#explain-its-implications-for-real-world-applications-business-strategies-or-public-policy.",
-    "title": "Beer Market Analysis",
+    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
     "section": "4.1 Explain its implications for real-world applications, business strategies, or public policy.",
     "text": "4.1 Explain its implications for real-world applications, business strategies, or public policy."
   },
   {
     "objectID": "project.html#list-all-sources-cited-in-the-project.",
     "href": "project.html#list-all-sources-cited-in-the-project.",
-    "title": "Beer Market Analysis",
+    "title": "Analyzing Market Dynamics and Consumer Behavior in the Beer Industry",
     "section": "5.1 List all sources cited in the project.",
     "text": "5.1 List all sources cited in the project."
   },

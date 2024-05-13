@@ -19,6 +19,8 @@
 "
 "2","      if Arial Narrow is not on your system, please see https://bit.ly/arialnarrow
 "
+"0","library(dplyr)"
+"0",""
 "0","theme_set(theme_ipsum()+"
 "0","          theme(strip.background =element_rect(fill=""lightgray""),"
 "0","                axis.title.x = "

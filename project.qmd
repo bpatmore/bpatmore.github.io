@@ -1,5 +1,5 @@
 ---
-title: Beer Market Analysis
+title: Analyzing Market Dynamics and Consumer Behavior in the Beer Industry 
 subtitle: "Data-Driven Mastery: Unlocking Business Potential"
 author: 
   - Brett Patmore
@@ -89,10 +89,11 @@ rmarkdown::paged_table(beer_markets)
 
 # Introduction
 
-## Background: Provide context for the research topics, explaining why they are significant or relevant. 
+## Background 
+The beer industry is one of the largest sectors of the global beverage market. Beer is a staple for millions of people whether it be for a celebration, social gathering, of just everyday life. Like everything in the world, the beer market is constantly evolving due to trends in the market and consumer preference changes. One consumer preference in the beer market is light beer and almost every beer company makes their own light beer. The beer markets data includes data about Bud Light, Busch Light, Coors Light, Miller Lite, and Natural Light. I am going to analyze the beer markets data to find information about brand preferences, purchasing patterns, and beer consumption trends. This information is significant because it can provide insight into competitive challenges, market opportunities, and areas of innovation and growth for breweries and retailers. 
 
-## Statement of the Problem: Clearly articulate the specific problem or issue the project will address.
-
+## Statement of the Problem
+The overall goal of breweries and retailers that sell beer is to make money. In order to do this, they need to understand factors that drive consumer behavior and influence their purchasing decisions. They also need to find their specific target market and cater their beer to meet the needs of this target market. Factors in the target market include income, employment, age, race, housing, and family dynamic. I am going to analyze the dynamics and consumer behavior in the beer markets data. In doing so, I will gain an understanding of beer consumption trends, brand preferences, and purchasing patterns. I will see what the target market for each brand is and also see information about their promotions to see how this effects purchasing patterns. The problem this will address is decision making for breweries and retailers. The insight provided from the analysis of this data will tell them about competitive challenges, market opportunities, potential changes, and areas of innovation or growth to help guide their decision making.
 
 <br><br>
 
