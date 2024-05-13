@@ -256,8 +256,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="3.1" class="anchored" data-anchor-id="question-1"><span class="header-section-number">3.1</span> Question 1</h2>
 <ul>
 <li>What is the most popular beer brand purchased at each income level?</li>
-<li>Does income have an impact on which brand consumers purchase? <em>Answer:</em></li>
+<li>Does income have an impact on which brand consumers purchase?</li>
 </ul>
+<p><em>Answer:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>beer_markets2 <span class="ot">&lt;-</span> beer_markets <span class="sc">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income_numeric =</span> <span class="fu">case_when</span>(</span>
@@ -299,7 +300,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="question-2" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="question-2"><span class="header-section-number">3.2</span> Question 2</h2>
-<p>-Which income level buys the most beer?</p>
+<ul>
+<li>Which income level buys the most beer?</li>
+</ul>
 <p><em>Answer:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>beer_quantity <span class="ot">&lt;-</span> beer_markets2 <span class="sc">|&gt;</span> </span>
@@ -322,7 +325,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="question-3" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="question-3"><span class="header-section-number">3.3</span> Question 3</h2>
-<p>-What percentage of purchases in each income level are made during a promotion?</p>
+<ul>
+<li>What percentage of purchases in each income level are made during a promotion?</li>
+</ul>
 <p><em>Answer:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>beer_promotion <span class="ot">&lt;-</span> beer_markets2 <span class="sc">|&gt;</span> </span>
@@ -379,7 +384,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">|&gt;</span> </span>
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_quantity <span class="sc">==</span> <span class="fu">max</span>(total_quantity))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This data can help the brands determine where they need to distribute the most stock and which state they should target the most. For example, Florida and Texas have by far more beer sales than the rest of the states, so they will require a larger stock. Florida is the most popular state for Bud Light, Busch Light, Miller Lite, and Natural Light so those companies should be sure to have a large stock in Florida. Texas is the most popular state for Coors Light so they need a large stock in Texas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(beer_quantity_by_state, <span class="fu">aes</span>(<span class="at">x =</span> state, <span class="at">y =</span> total_quantity)) <span class="sc">+</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>

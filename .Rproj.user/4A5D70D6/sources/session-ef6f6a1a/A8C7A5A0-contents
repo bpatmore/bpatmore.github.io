@@ -104,6 +104,7 @@ The overall goal of breweries and retailers that sell beer is to maximize profit
 
 - What is the most popular beer brand purchased at each income level?
 - Does income have an impact on which brand consumers purchase?
+
 *Answer:* 
 ```{r}
 beer_markets2 <- beer_markets %>%
@@ -148,7 +149,7 @@ The most obvious trends visible from this is that as income increases, the perce
 
 ## Question 2
 
--Which income level buys the most beer? 
+- Which income level buys the most beer? 
 
 *Answer:*
 ```{r}
@@ -170,7 +171,7 @@ The income level that purchases the most beer is 20-60k at 46786. As income leve
 
 ## Question 3
 
--What percentage of purchases in each income level are made during a promotion?
+- What percentage of purchases in each income level are made during a promotion?
 
 *Answer:* 
 ```{r}
@@ -225,7 +226,6 @@ most_popular_state_for_brand <- brand_by_state |>
   group_by(brand) |> 
   filter(total_quantity == max(total_quantity))
 ```
-This data can help the brands determine where they need to distribute the most stock and which state they should target the most. For example, Florida and Texas have by far more beer sales than the rest of the states, so they will require a larger stock. Florida is the most popular state for Bud Light, Busch Light, Miller Lite, and Natural Light so those companies should be sure to have a large stock in Florida. Texas is the most popular state for Coors Light so they need a large stock in Texas. 
 
 ```{r}
 ggplot(beer_quantity_by_state, aes(x = state, y = total_quantity)) +
@@ -237,7 +237,6 @@ ggplot(beer_quantity_by_state, aes(x = state, y = total_quantity)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 This data can help the brands determine where they need to distribute the most stock and which state they should target the most. For example, Florida and Texas have by far more beer sales than the rest of the states, so they will require a larger stock.
-
 
 ```{r}
 ggplot(top_states_for_each_brand, aes(x = brand, y = total_quantity, fill = state)) +
