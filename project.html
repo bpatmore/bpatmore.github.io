@@ -162,6 +162,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1"><span class="header-section-number">3.1</span> Question 1</a></li>
   <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2"><span class="header-section-number">3.2</span> Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3"><span class="header-section-number">3.3</span> Question 3</a></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4"><span class="header-section-number">3.4</span> Question 4</a></li>
   </ul></li>
   <li><a href="#significance-of-the-project" id="toc-significance-of-the-project" class="nav-link" data-scroll-target="#significance-of-the-project"><span class="header-section-number">4</span> Significance of the Project</a>
   <ul class="collapse">
@@ -252,51 +254,159 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 data-number="3"><span class="header-section-number">3</span> Exploratory Data Analysis</h1>
 <section id="question-1" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="question-1"><span class="header-section-number">3.1</span> Question 1</h2>
-<p>What is the most popular beer brand purchased at each income level? Does income have an impact on which brand consumers purchase?</p>
-<p><em>Answer:</em></p>
+<ul>
+<li>What is the most popular beer brand purchased at each income level?</li>
+<li>Does income have an impact on which brand consumers purchase? <em>Answer:</em></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>beer_brand_purchases <span class="ot">&lt;-</span> beer_markets <span class="sc">|&gt;</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income, brand) <span class="sc">|&gt;</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity))</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>most_popular_brands_by_income <span class="ot">&lt;-</span> beer_brand_purchases <span class="sc">|&gt;</span> </span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income) <span class="sc">|&gt;</span> </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_quantity <span class="sc">==</span> <span class="fu">max</span>(total_quantity)) <span class="sc">|&gt;</span> </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(income, brand, total_quantity)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>brand_distribution <span class="ot">&lt;-</span> beer_brand_purchases <span class="sc">|&gt;</span> </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income) <span class="sc">|&gt;</span> </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percentage =</span> total_quantity <span class="sc">/</span> <span class="fu">sum</span>(total_quantity) <span class="sc">*</span> <span class="dv">100</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Bud Light is the most purchased brand at every income level besides the 60-100K level where Miller Lite is the most popular. Income does not appear to have an impact on which brand consumers purchase since Bud light is the most popular for the lowest and highest income level.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>beer_markets2 <span class="ot">&lt;-</span> beer_markets <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income_numeric =</span> <span class="fu">case_when</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    income <span class="sc">==</span> <span class="st">"under20k"</span> <span class="sc">~</span> <span class="dv">20000</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    income <span class="sc">==</span> <span class="st">"20-60k"</span> <span class="sc">~</span> <span class="dv">60000</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    income <span class="sc">==</span> <span class="st">"60-100k"</span> <span class="sc">~</span> <span class="dv">100000</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    income <span class="sc">==</span> <span class="st">"100-200k"</span> <span class="sc">~</span> <span class="dv">200000</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    income <span class="sc">==</span> <span class="st">"200k+"</span> <span class="sc">~</span> <span class="dv">500000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>beer_brand_purchases <span class="ot">&lt;-</span> beer_markets2 <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income, income_numeric, brand) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>most_popular_brands_by_income <span class="ot">&lt;-</span> beer_brand_purchases <span class="sc">|&gt;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income, income_numeric) <span class="sc">|&gt;</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_quantity <span class="sc">==</span> <span class="fu">max</span>(total_quantity)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(income, income_numeric, brand, total_quantity)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>brand_distribution <span class="ot">&lt;-</span> beer_brand_purchases <span class="sc">|&gt;</span> </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income, income_numeric) <span class="sc">|&gt;</span> </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percentage =</span> total_quantity <span class="sc">/</span> <span class="fu">sum</span>(total_quantity) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(income_numeric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Bud Light is the most purchased brand at every income level besides the 60-100K level where Miller Lite is the most popular. Income does not appear to have an impact on which brand consumers purchase since Bud light is the most popular for the lowest and highest income level.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(brand_distribution, <span class="fu">aes</span>(<span class="at">x =</span> income_numeric, <span class="at">y =</span> percentage, <span class="at">fill =</span> brand)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Income"</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">unique</span>(brand_distribution<span class="sc">$</span>income_numeric),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">unique</span>(brand_distribution<span class="sc">$</span>income)) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="project_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+<p>The most obvious trends visible from this is that as income increases, the percentage of Natural Light and Busch Light decrease. As Natural Light and Busch Light are decreasing, Miller Lite and Bud Light are both increasing in percentage as income increases. This indicated that Natural Light and Busch Light are more popular with lower income customers and Miller Lite and Bud Light are more popular with higher income customers.</p>
 </section>
 <section id="question-2" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="question-2"><span class="header-section-number">3.2</span> Question 2</h2>
-<p>What is the most popular beer brand in each state? Which states buy the most beer overall? Which state buys the most of each brand?</p>
+<p>-Which income level buys the most beer?</p>
 <p><em>Answer:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>brand_by_state <span class="ot">&lt;-</span> beer_markets <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state, brand) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>most_popular_brand_by_state <span class="ot">&lt;-</span> brand_by_state <span class="sc">|&gt;</span> </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span> </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_quantity <span class="sc">==</span> <span class="fu">max</span>(total_quantity)) <span class="sc">|&gt;</span> </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(state, brand, total_quantity) <span class="sc">|&gt;</span> </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_quantity))</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>beer_quantity_by_state <span class="ot">&lt;-</span> beer_markets <span class="sc">|&gt;</span> </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span> </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity)) <span class="sc">|&gt;</span> </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_quantity))</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>most_popular_state_for_brand <span class="ot">&lt;-</span> brand_by_state <span class="sc">|&gt;</span> </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">|&gt;</span> </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_quantity <span class="sc">==</span> <span class="fu">max</span>(total_quantity))</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#This data can help the brands determine where they need to distribute the most stock and which state they should target the most. For example, Florida and Texas have by far more beer sales than the rest of the states, so they will require a larger stock. Florida is the most popular state for Bud Light, Busch Light, Miller Lite, and Natural Light so those companies should be sure to have a large stock in Florida. Texas is the most popular state for Coors Light so they need a large stock in Texas. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>beer_quantity <span class="ot">&lt;-</span> beer_markets2 <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income, income_numeric) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_quantity))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(beer_quantity, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> income_numeric, <span class="at">y =</span> total_quantity)) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Income"</span>, <span class="at">y =</span> <span class="st">"Total Quantity of Beer Bought"</span>) <span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> beer_quantity<span class="sc">$</span>income_numeric, <span class="at">labels =</span> beer_quantity<span class="sc">$</span>income) <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="project_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="864"></p>
 </div>
+</div>
+<p>The income level that purchases the most beer is 20-60k at 46786. As income level increases, the quantity of beer purchased exponentially decreases as it goes all the way down to 812 for those making 200k+. People making under 20k were the second least with 8469 most likely due to their limited budget.</p>
+</section>
+<section id="question-3" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="question-3"><span class="header-section-number">3.3</span> Question 3</h2>
+<p>-What percentage of purchases in each income level are made during a promotion?</p>
+<p><em>Answer:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>beer_promotion <span class="ot">&lt;-</span> beer_markets2 <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(income, income_numeric, promo)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>promo_percentage <span class="ot">&lt;-</span> beer_promotion <span class="sc">|&gt;</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(income, income_numeric) <span class="sc">|&gt;</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">promo_percent =</span> <span class="fu">mean</span>(promo) <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(promo_percentage,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> income_numeric, <span class="at">y =</span> promo_percent)) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Income"</span>, <span class="at">y =</span> <span class="st">"Percentage Purchased During Promotion"</span>) <span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> promo_percentage<span class="sc">$</span>income_numeric, <span class="at">labels =</span> promo_percentage<span class="sc">$</span>income) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="project_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+<p>There is almost a direct correlation between income and percentage of purchases made during a promotion. The correlation is that as income increases, so does the percentage of purchases made during a promotion. This is true for all values other than a slight decrease from the 60-100k to the 100-200k income levels. This shows that people with a higher income are usually more likely ot respond to a promotion for beer.</p>
+</section>
+<section id="question-4" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="question-4"><span class="header-section-number">3.4</span> Question 4</h2>
+<ul>
+<li>What is the most popular beer brand in each state?</li>
+<li>Which states buy the most beer overall?</li>
+<li>Which state buys the most of each brand?</li>
+</ul>
+<p><em>Answer:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>brand_by_state <span class="ot">&lt;-</span> beer_markets <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state, brand) <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>most_popular_brand_by_state <span class="ot">&lt;-</span> brand_by_state <span class="sc">|&gt;</span> </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_quantity <span class="sc">==</span> <span class="fu">max</span>(total_quantity)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(state, brand, total_quantity) <span class="sc">|&gt;</span> </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_quantity))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>top_states_for_each_brand <span class="ot">&lt;-</span> brand_by_state <span class="sc">|&gt;</span> </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">|&gt;</span> </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_quantity)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">|&gt;</span> </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>beer_quantity_by_state <span class="ot">&lt;-</span> beer_markets <span class="sc">|&gt;</span> </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span> </span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_quantity))</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>most_popular_state_for_brand <span class="ot">&lt;-</span> brand_by_state <span class="sc">|&gt;</span> </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">|&gt;</span> </span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_quantity <span class="sc">==</span> <span class="fu">max</span>(total_quantity))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This data can help the brands determine where they need to distribute the most stock and which state they should target the most. For example, Florida and Texas have by far more beer sales than the rest of the states, so they will require a larger stock. Florida is the most popular state for Bud Light, Busch Light, Miller Lite, and Natural Light so those companies should be sure to have a large stock in Florida. Texas is the most popular state for Coors Light so they need a large stock in Texas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(beer_quantity_by_state, <span class="fu">aes</span>(<span class="at">x =</span> state, <span class="at">y =</span> total_quantity)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Total Quantity of Beers Purchased by State"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"State"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Total Quantity"</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="project_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+<p>This data can help the brands determine where they need to distribute the most stock and which state they should target the most. For example, Florida and Texas have by far more beer sales than the rest of the states, so they will require a larger stock.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_states_for_each_brand, <span class="fu">aes</span>(<span class="at">x =</span> brand, <span class="at">y =</span> total_quantity, <span class="at">fill =</span> state)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top States for Each Brand"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Brand"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Total Quantity"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"State"</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="project_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+<p>Natural Light in Florida is the highest total quantity out of all beers in every state. This will help retailers in Florida know that they need to order a lot of Natural Light to always keep it in stock since there is such high demand. California shows up only one time and it is for Coors Light so that will help retailers in California know they need to order a good amount of Coors Light. Overall every brand is going to need to send a large quantity of their beer to Texas because that is the state with either the most or second most purchased of each brand.</p>
 <p><br><br></p>
 </section>
 </section>

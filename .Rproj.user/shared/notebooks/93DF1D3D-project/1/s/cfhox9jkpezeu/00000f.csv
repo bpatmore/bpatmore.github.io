@@ -1,0 +1,7 @@
+"0","beer_markets2 <- beer_markets %>%"
+"0","  mutate(income_numeric = case_when("
+"0","    income == ""under20k"" ~ 20000,"
+"0","    income == ""20-60k"" ~ 60000,"
+"0","    income == ""60-100k"" ~ 100000,"
+"0","    income == ""100-200k"" ~ 200000,"
+"0","    income == ""200k+"" ~ 500000))"

@@ -1,0 +1,19 @@
+"0","top_states_for_each_brand <- brand_by_state |> 
+  group_by(brand) |> 
+  slice_max(x, n = 3)
+"
+"1","[1m[33mError[39m in `slice_max()`:[22m
+[38;5;232m[33m![38;5;232m Can't compute indices.
+[36mℹ[38;5;232m In group 1: `brand = ""BUD LIGHT""`.[39m
+[1mCaused by error:[22m
+[33m![39m object 'x' not found
+Backtrace:
+[90m  1. [39m[1mdplyr[22m::slice_max(group_by(brand_by_state, brand), x, n = 3)
+[90m 13. [39m[1mbase[22m::local(...)
+[90m 14. [39mbase::eval.parent(substitute(eval(quote(expr), envir)))
+[90m 15. [39mbase::eval(expr, p)
+[90m 16. [39mbase::eval(expr, p)
+[90m 17. [39mbase::eval(...)
+[90m 18. [39mbase::eval(...)
+[90m 19. [39mx
+"
