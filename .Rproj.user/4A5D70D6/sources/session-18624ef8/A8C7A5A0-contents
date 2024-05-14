@@ -188,7 +188,7 @@ spent_per_income <- beer_markets2 |>
   summarize(avg_dollar_spent = mean(dollar_spent, na.rm = TRUE)) |> 
   arrange(desc(income_numeric))
 
-print(spent_per_income)
+rmarkdown::paged_table(spent_per_income)
 ```
 Income does have a direct impact on the average amount of money that a customer spends on beer. As income increases, so does the average dollar amount that they spent. For those making under 20k, they spent an average of 13.51 dollars while those making 200k+ spent an average of 15.12 dollars. This makes sense because the customers with higher income have more money to spend. 
 
@@ -303,7 +303,7 @@ beer_by_age <- beer_markets2 |>
   arrange(desc(total_quantity))
 
 ggplot(beer_by_age,
-       aes(x = age, y = total_quantity)) +
+       aes(x = age, y = total_quantity, color = age, size = 2)) +
   geom_point() +
   labs(title = "Beers Purchased By Age", 
        x = "Age", 
@@ -409,7 +409,7 @@ employment_beers <- beer_markets2 |>
   summarize(total_quantity = sum(quantity, na.rm = TRUE)) |> 
   arrange(desc(total_quantity))
 
-print(employment_beers)
+rmarkdown::paged_table(employment_beers)
 ```
 ```{r}
 employment_brands <- beer_markets2 |> 
@@ -440,7 +440,7 @@ degree_totals <- beer_markets2 |>
   summarize(total_quantity = sum(quantity)) |> 
   arrange(desc(total_quantity))
 
-print(degree_totals)
+rmarkdown::paged_table(degree_totals)
 ```
 ```{r}
 degree_brands <- beer_markets2 |> 
