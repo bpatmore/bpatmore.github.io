@@ -476,7 +476,7 @@ brand_most_purchased <- target_market |>
   arrange(desc(total_quantity)) |> 
   slice_head(n = 1)
 
-print(brand_most_purchased)
+rmarkdown::paged_table(brand_most_purchased)
 ```
 This shows the specific income, state, age, buyertype, race, employment, and degree combination that  purchased the most of each beer brand. The most purchased brand by one of these specific combinations is Bud Light with 1080 total. These customers had an income under 20k, live in New York, are between 40-49 years old, female, Hispanic, have part time employment, and a college degree. This breakdown can help the beer brands find out what target market they are selling the most to and meet the needs of these specific customers. 
 ```{r}
@@ -485,7 +485,7 @@ brand_target_market <- target_market |>
   arrange(desc(total_quantity)) |> 
   slice_head(n = 10)
 
-print(brand_target_market)
+rmarkdown::paged_table(brand_target_market)
 ```
 This shows the 10 most common specific combinations of income, state, age, buyertype, race, employment, and degree that purchased each beer brand. This data will further help the beer brands understand their target market and meet their needs. 
 

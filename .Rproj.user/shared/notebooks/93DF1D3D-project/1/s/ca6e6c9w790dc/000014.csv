@@ -1,6 +1,0 @@
-"0","brand_target_market <- target_market |> "
-"0","  group_by(brand) |> "
-"0","  arrange(desc(total_quantity)) |> "
-"0","  slice_head(n = 10)"
-"0",""
-"0","print(brand_target_market)"
