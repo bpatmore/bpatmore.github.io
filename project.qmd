@@ -174,7 +174,7 @@ ggplot(beer_quantity,
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
-The income level that purchases the most beer is 20-60k at 46786. As income level increases, the quantity of beer purchased exponentially decreases as it goes all the way down to 812 for those making 200k+. People making under 20k were the second least with 8469 most likely due to their limited budget. 
+The income level that purchases the most beer is 20-60k at 46,786. As income level increases, the quantity of beer purchased exponentially decreases as it goes all the way down to 812 for those making 200k+. People making under 20k were the second least with 8,469 most likely due to their limited budget. 
 
 
 ## Question 3
@@ -351,7 +351,7 @@ ggplot(beer_markets2,
        y = "Count") +
   theme_minimal()
 ```
-Buyers who are married buy significantly more beer than individual male or female buyers. Males buy a little bit more than females for every brand. Bud Light is the most frequently purchased by every buyer type with 14706 in the married type being the most in the data.. Busch Light is the lowest for each group with only 864 purchased by females being the least in the data. 
+Buyers who are married buy significantly more beer than individual male or female buyers. Males buy a little bit more than females for every brand. Bud Light is the most frequently purchased by every buyer type with 14,706 in the married type being the most in the data.. Busch Light is the lowest for each group with only 864 purchased by females being the least in the data. 
 
 
 ## Question 8
@@ -425,7 +425,7 @@ ggplot(employment_brands,
        y = "Quantity") +
   theme_minimal()
 ```
-Customers with full time employment purchased significantly more beers than customers with part time of no employment. Full time purchased 68939, while unemployed purchased 18456, and part time purchased only 8936. Bud Light was the most purchased brand for each employment type but was significantly more for those with full time employment at 20810. 
+Customers with full time employment purchased significantly more beers than customers with part time of no employment. Full time purchased 68,939, while unemployed purchased 18,456, and part time purchased only 8,936. Bud Light was the most purchased brand for each employment type but was significantly more for those with full time employment at 20,810. 
 
 
 ## Question 10
@@ -456,7 +456,7 @@ ggplot(degree_brands,
        y = "Quantity") +
   theme_minimal()
 ```
-Customers with a HS degree purchase the most beer followed by those with college degrees. Bud Light is the most purchased by every degree type with 16816 for HS degree customers. Natural Light is the second highest for HS degree and customers with no degree while Miller Lite is the second highest for college and grad degree customers. 
+Customers with a HS degree purchase the most beer followed by those with college degrees. Bud Light is the most purchased by every degree type with 16,816 for HS degree customers. Natural Light is the second highest for HS degree and customers with no degree while Miller Lite is the second highest for college and grad degree customers. 
 
 
 ## Question 11
@@ -478,7 +478,7 @@ brand_most_purchased <- target_market |>
 
 rmarkdown::paged_table(brand_most_purchased)
 ```
-This shows the specific income, state, age, buyertype, race, employment, and degree combination that  purchased the most of each beer brand. The most purchased brand by one of these specific combinations is Bud Light with 1080 total. These customers had an income under 20k, live in New York, are between 40-49 years old, female, Hispanic, have part time employment, and a college degree. This breakdown can help the beer brands find out what target market they are selling the most to and meet the needs of these specific customers. 
+This shows the specific income, state, age, buyertype, race, employment, and degree combination that  purchased the most of each beer brand. The most purchased brand by one of these specific combinations is Bud Light with 1,080 total. These customers had an income under 20k, live in New York, are between 40-49 years old, female, Hispanic, have part time employment, and a college degree. This breakdown can help the beer brands find out what target market they are selling the most to and meet the needs of these specific customers. 
 ```{r}
 brand_target_market <- target_market |> 
   group_by(brand) |> 
@@ -497,12 +497,48 @@ This shows the 10 most common specific combinations of income, state, age, buyer
 
 # Significance of the Project
 
-## Explain its implications for real-world applications, business strategies, or public policy. 
+## Question 1
+Bud Light is the most purchased brand at every income level besides the 60-100K level where Miller Lite is the most popular. Income does not appear to have an impact on which brand consumers purchase since Bud light is the most popular for the lowest and highest income level.
+
+The most obvious trends visible from this is that as income increases, the percentage of Natural Light and Busch Light decrease. As Natural Light and Busch Light are decreasing, Miller Lite and Bud Light are both increasing in percentage as income increases. This indicated that Natural Light and Busch Light are more popular with lower income customers and Miller Lite and Bud Light are more popular with higher income customers. 
+
+## Question 2
+The income level that purchases the most beer is 20-60k at 46,786. As income level increases, the quantity of beer purchased exponentially decreases as it goes all the way down to 812 for those making 200k+. People making under 20k were the second least with 8,469 most likely due to their limited budget. 
+
+## Question 3
+Income does have a direct impact on the average amount of money that a customer spends on beer. As income increases, so does the average dollar amount that they spent. For those making under 20k, they spent an average of 13.51 dollars while those making 200k+ spent an average of 15.12 dollars. This makes sense because the customers with higher income have more money to spend.
+
+## Question 4
+There is almost a direct correlation between income and percentage of purchases made during a promotion. The correlation is that as income increases, so does the percentage of purchases made during a promotion. This is true for all values other than a slight decrease from the 60-100k to the 100-200k income levels. This shows that people with a higher income are usually more likely ot respond to a promotion for beer.
+
+## Question 5
+This data can help the brands determine where they need to distribute the most stock and which state they should target the most. For example, Florida and Texas have by far more beer sales than the rest of the states, so they will require a larger stock.
+
+Natural Light in Florida is the highest total quantity out of all beers in every state. This will help retailers in Florida know that they need to order a lot of Natural Light to always keep it in stock since there is such high demand. California shows up only one time and it is for Coors Light so that will help retailers in California know they need to order a good amount of Coors Light. Overall every brand is going to need to send a large quantity of their beer to Texas because that is the state with either the most or second most purchased of each brand.
+
+## Question 6
+The quantity of beer purchased exponentially increases as age increases. This can help the beer companies and retailers, because knowing that 50+ is their largest customer, they can target advertisements to appeal to them.
+
+Bud Light is the most popular brand and Miller Lite is the second most popular brand for every age group. Busch Light is the least popular for every age group. The difference between Bud Light and Busch Light gets larger as age increases. This information can be helpful to retailers because it will help them determine how many of each brand to have in stock depending on the typical age of their customer.
+
+## Question 7
+Buyers who are married buy significantly more beer than individual male or female buyers. Males buy a little bit more than females for every brand. Bud Light is the most frequently purchased by every buyer type with 14,706 in the married type being the most in the data.. Busch Light is the lowest for each group with only 864 purchased by females being the least in the data.
+
+## Question 8
+Bud Light is most frequently purchased brand for every race in this data. Hispanic and Asian customers purchase Bud Light over 40 percent of the time that they are purchasing beer with Hispanics all the way at 46.34 percent. Asian customers purchasing Busch Light is by far the lowest percentage with it making up only 1.42 percent of their beer purchases.
+
+## Question 9
+Customers with full time employment purchased significantly more beers than customers with part time of no employment. Full time purchased 68,939, while unemployed purchased 18,456, and part time purchased only 8,936. Bud Light was the most purchased brand for each employment type but was significantly more for those with full time employment at 20,810.
+
+## Question 10
+Customers with a HS degree purchase the most beer followed by those with college degrees. Bud Light is the most purchased by every degree type with 16,816 for HS degree customers. Natural Light is the second highest for HS degree and customers with no degree while Miller Lite is the second highest for college and grad degree customers.
+
+## Question 11
+This shows the specific income, state, age, buyertype, race, employment, and degree combination that purchased the most of each beer brand. The most purchased brand by one of these specific combinations is Bud Light with 1080 total. These customers had an income under 20k, live in New York, are between 40-49 years old, female, Hispanic, have part time employment, and a college degree. This breakdown can help the beer brands find out what target market they are selling the most to and meet the needs of these specific customers.
+
+This shows the 10 most common specific combinations of income, state, age, buyertype, race, employment, and degree that purchased each beer brand. This data will further help the beer brands understand their target market and meet their needs.
+
+## Overall Significance
+By using this data, beer brands and retailers can have a better understanding of their target market. This can tell them about competitive challenges, market opportunities, potential changes, and areas of innovation or growth to help guide their decision making in order to maximize profits. 
 
 
-<br><br>
-
-
-# References
-
-## List all sources cited in the project. 
